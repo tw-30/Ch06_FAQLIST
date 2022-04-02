@@ -1,0 +1,36 @@
+﻿@model List<Question>
+@{
+    ViewBag.Title = "Tyler and Phillips Contacts";
+}
+
+<h2> Tyler and Phillip's FAQ</h2>
+
+<a asp-controller="Home" asp-action="Index">All FAQ</a>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>QuestionID </th>
+            <th>Question</th>
+            <th>TopicName</th>
+            <th>CategoryName</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var question in Model)
+        {
+            <tr>
+                <td>@question.QuestionID</td>
+                <td>@question.QuestionMSG</td>
+                <td>@question.TopicType</td>
+                <td>@question.CategoryType</td>
+                <td>
+                    <a asp-controller="Question" asp-action="TopicSort"
+                   asp-route-id="@question.QuestionID">Topic Sort</a>
+                    <a asp-controller="Question" asp-action="CategorySort"
+                   asp-route-id="@question.QuestionID">Category Sort</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
